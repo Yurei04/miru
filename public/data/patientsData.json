@@ -1,6 +1,95 @@
 [
-    {
-        "name": "",
-        "patientID": ""
-    }
+  {
+    "id": 1,
+    "name": "John Doe",
+    "history": [
+      {
+        "detectionType": "Eye Scan",
+        "startTime": "2025-08-20T09:00:00Z",
+        "endTime": "2025-08-20T09:30:00Z",
+        "duration": "30 mins",
+        "notes": "Routine checkup, no abnormalities."
+      },
+      {
+        "detectionType": "Blood Test",
+        "startTime": "2025-08-18T10:00:00Z",
+        "endTime": "2025-08-18T10:15:00Z",
+        "duration": "15 mins",
+        "notes": "Cholesterol slightly high, advised diet change."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Jane Smith",
+    "history": [
+      {
+        "detectionType": "X-Ray",
+        "startTime": "2025-08-19T14:00:00Z",
+        "endTime": "2025-08-19T14:20:00Z",
+        "duration": "20 mins",
+        "notes": "Minor fracture in left wrist."
+      },
+      {
+        "detectionType": "MRI Scan",
+        "startTime": "2025-08-15T11:00:00Z",
+        "endTime": "2025-08-15T11:45:00Z",
+        "duration": "45 mins",
+        "notes": "Brain scan normal."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Alice Johnson",
+    "history": [
+      {
+        "detectionType": "General Checkup",
+        "startTime": "2025-08-21T08:30:00Z",
+        "endTime": "2025-08-21T09:00:00Z",
+        "duration": "30 mins",
+        "notes": "Blood pressure slightly elevated."
+      },
+      {
+        "detectionType": "Vaccination",
+        "startTime": "2025-08-10T09:00:00Z",
+        "endTime": "2025-08-10T09:10:00Z",
+        "duration": "10 mins",
+        "notes": "Flu vaccine administered."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Michael Brown",
+    "history": [
+      {
+        "detectionType": "Eye Scan",
+        "startTime": "2025-08-17T13:00:00Z",
+        "endTime": "2025-08-17T13:20:00Z",
+        "duration": "20 mins",
+        "notes": "Detected early signs of myopia."
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Emily Davis",
+    "history": [
+      {
+        "detectionType": "Blood Test",
+        "startTime": "2025-08-16T10:00:00Z",
+        "endTime": "2025-08-16T10:20:00Z",
+        "duration": "20 mins",
+        "notes": "Hemoglobin levels normal."
+      },
+      {
+        "detectionType": "Dental Checkup",
+        "startTime": "2025-08-14T11:00:00Z",
+        "endTime": "2025-08-14T11:30:00Z",
+        "duration": "30 mins",
+        "notes": "Cavity found, recommended filling."
+      }
+    ]
+  }
 ]
