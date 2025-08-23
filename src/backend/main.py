@@ -11,7 +11,7 @@ model = YOLO("yolov8n.pt")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["*"], # change to the backend link later this is dangerous
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"]

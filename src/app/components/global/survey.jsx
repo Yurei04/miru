@@ -1,117 +1,121 @@
 "use client"
-import { useState, useEffect } from "react"
+import { useState } from "react"
+import { useRouter } from "next/navigation"
 
-const Questions = [
+const questions = [
   {
     question: "What did you see?",
-    answers: ["Animal", "Human", "Object", "Shadow", "Light", "Other"]
+    type: "multiple",
+    options: ["Animal", "Human", "Object", "Shadow", "Light", "Other"]
   },
   {
     question: "What did you hear?",
-    answers: ["Voices", "Music", "Noise", "Whispers", "Other"]
-  },
-  {
-    question: "How real did it feel?",
-    answers: ["Not real", "Somewhat real", "Very real"]
+    type: "multiple",
+    options: ["Voices", "Music", "Noise", "Whispers", "Other"]
   },
   {
     question: "Did it scare you?",
-    answers: ["Yes", "No", "A little"]
+    type: "yesno"
+  },
+  {
+    question: "Do you want to report this episode?",
+    type: "yesno"
   }
 ]
 
 export default function SurveyQuestions({ detectionType }) {
   const [responses, setResponses] = useState({})
-  const [sessionInfo, setSessionInfo] = useState({
-    startTime: "",
-    endTime: "",
-    duration: "",
-    detection: detectionType || "Unknown"
-  })
+  const router = useRouter()
 
-  // record session start when component loads
-  useEffect(() => {
-    const start = new Date()
-    setSessionInfo((prev) => ({
-      ...prev,
-      startTime: start.toLocaleString()
-    }))
-  }, [detectionType])
+  const handleMultiChange = (qIndex, option, isChecked) => {
+    setResponses(prev => {
+      const prevArr = Array.isArray(prev[qIndex]) ? prev[qIndex] : []
+      const nextArr = isChecked
+        ? Array.from(new Set([...prevArr, option]))
+        : prevArr.filter(o => o !== option)
+      return { ...prev, [qIndex]: nextArr }
+    })
+  }
 
-  const handleCheckboxChange = (qIndex, answer) => {
-    setResponses((prev) => {
-      const prevAnswers = prev[qIndex] || []
-      if (prevAnswers.includes(answer)) {
-        return {
-          ...prev,
-          [qIndex]: prevAnswers.filter((a) => a !== answer),
-        }
+  const handleYesNoChange = (qIndex, value, isChecked) => {
+    setResponses(prev => {
+      if (isChecked) {
+        return { ...prev, [qIndex]: value }
       } else {
-        return {
-          ...prev,
-          [qIndex]: [...prevAnswers, answer],
-        }
+        const copy = { ...prev }
+        if (copy[qIndex] === value) delete copy[qIndex]
+        return copy
       }
     })
   }
 
-  const finishSurvey = () => {
-    const end = new Date()
-    const start = new Date(sessionInfo.startTime)
-    const durationMs = end - start
-    const durationMin = Math.floor(durationMs / 60000)
-    const durationSec = Math.floor((durationMs % 60000) / 1000)
+  const handleSubmit = () => {
+    const now = new Date()
+    const submission = {
+      date: now.toLocaleDateString(),
+      time: now.toLocaleTimeString(),
+      detectionType,
+      responses
+    }
 
-    setSessionInfo((prev) => ({
-      ...prev,
-      endTime: end.toLocaleString(),
-      duration: `${durationMin}m ${durationSec}s`
-    }))
+    console.log("Survey submitted:", submission)
+    router.push("/")
   }
 
   return (
     <div className="p-4 space-y-6">
-      {/* Survey Questions */}
-      {Questions.map((quest, qIndex) => (
-        <div key={qIndex} className="border p-4 rounded-lg shadow">
-          <h3 className="font-semibold mb-2">{quest.question}</h3>
-          <div className="space-y-2">
-            {quest.answers.map((answer, aIndex) => (
-              <label key={aIndex} className="flex items-center space-x-2">
-                <input
-                  type="checkbox"
-                  value={answer}
-                  checked={responses[qIndex]?.includes(answer) || false}
-                  onChange={() => handleCheckboxChange(qIndex, answer)}
-                />
-                <span>{answer}</span>
-              </label>
-            ))}
-          </div>
+      {questions.map((q, qIndex) => (
+        <div key={qIndex} className="border p-4 rounded-lg">
+          <p className="font-semibold mb-2">{q.question}</p>
+
+          {q.type === "multiple" && (
+            <div className="space-y-2">
+              {q.options.map((opt, aIndex) => {
+                const id = `q${qIndex}-opt${aIndex}`
+                const checked = (responses[qIndex] || []).includes(opt)
+                return (
+                  <label key={id} htmlFor={id} className="flex items-center gap-2">
+                    <input
+                      id={id}
+                      type="checkbox"
+                      checked={checked}
+                      onChange={(e) => handleMultiChange(qIndex, opt, e.target.checked)}
+                    />
+                    <span>{opt}</span>
+                  </label>
+                )
+              })}
+            </div>
+          )}
+
+          {q.type === "yesno" && (
+            <div className="space-y-2">
+              {["Yes", "No"].map((val, aIndex) => {
+                const id = `q${qIndex}-yn${aIndex}`
+                const checked = responses[qIndex] === val
+                return (
+                  <label key={id} htmlFor={id} className="flex items-center gap-2">
+                    <input
+                      id={id}
+                      type="checkbox"
+                      checked={checked}
+                      onChange={(e) => handleYesNoChange(qIndex, val, e.target.checked)}
+                    />
+                    <span>{val}</span>
+                  </label>
+                )
+              })}
+            </div>
+          )}
         </div>
       ))}
 
-      {/* Finish Button */}
       <button
-        onClick={finishSurvey}
-        className="px-4 py-2 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600"
+        onClick={handleSubmit}
+        className="mt-4 px-6 py-2 bg-yellow-400 text-gray-900 font-semibold rounded-lg shadow hover:bg-yellow-300 transition"
       >
-        Finish Survey
+        Submit
       </button>
-
-      {/* Session Data */}
-      <div className="mt-6 bg-gray-100 p-4 rounded">
-        <h4 className="font-bold">📊 Session Data</h4>
-        <p><strong>Start Time:</strong> {sessionInfo.startTime}</p>
-        <p><strong>End Time:</strong> {sessionInfo.endTime}</p>
-        <p><strong>Duration:</strong> {sessionInfo.duration}</p>
-        <p><strong>Detection Type:</strong> {sessionInfo.detection}</p>
-      </div>
-
-      {/* Debug: Raw Responses */}
-      <pre className="mt-4 bg-gray-100 p-2 rounded">
-        {JSON.stringify(responses, null, 2)}
-      </pre>
     </div>
   )
 }

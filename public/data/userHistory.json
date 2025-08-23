@@ -1,0 +1,106 @@
+[
+  {
+    "sessionId": "sess_001",
+    "detectionType": "Image Detection",
+    "startTime": "2025-08-20 14:32:10",
+    "endTime": "2025-08-20 14:44:10",
+    "duration": "12m 0s",
+    "responses": {
+      "0": ["Human", "Light"],
+      "1": ["Voices", "Music"],
+      "2": "Yes",
+      "3": "No"
+    }
+  },
+  {
+    "sessionId": "sess_002",
+    "detectionType": "Live Detection",
+    "startTime": "2025-08-21 09:10:05",
+    "endTime": "2025-08-21 09:18:05",
+    "duration": "8m 0s",
+    "responses": {
+      "0": ["Animal"],
+      "1": ["Noise"],
+      "2": "No",
+      "3": "Yes"
+    }
+  },
+  {
+    "sessionId": "sess_003",
+    "detectionType": "Image Detection",
+    "startTime": "2025-08-21 16:50:30",
+    "endTime": "2025-08-21 17:05:30",
+    "duration": "15m 0s",
+    "responses": {
+      "0": ["Object", "Shadow"],
+      "1": ["Whispers"],
+      "2": "Yes",
+      "3": "Yes"
+    }
+  },
+  {
+    "sessionId": "sess_004",
+    "detectionType": "Live Detection",
+    "startTime": "2025-08-22 11:20:10",
+    "endTime": "2025-08-22 11:40:10",
+    "duration": "20m 0s",
+    "responses": {
+      "0": ["Animal", "Light"],
+      "1": ["Music", "Noise"],
+      "2": "No",
+      "3": "No"
+    }
+  },
+  {
+    "sessionId": "sess_005",
+    "detectionType": "Image Detection",
+    "startTime": "2025-08-22 18:05:15",
+    "endTime": "2025-08-22 18:15:15",
+    "duration": "10m 0s",
+    "responses": {
+      "0": ["Human"],
+      "1": ["Voices"],
+      "2": "Yes",
+      "3": "No"
+    }
+  },
+  {
+    "sessionId": "sess_006",
+    "detectionType": "Live Detection",
+    "startTime": "2025-08-23 10:45:00",
+    "endTime": "2025-08-23 10:51:00",
+    "duration": "6m 0s",
+    "responses": {
+      "0": ["Shadow"],
+      "1": ["Noise"],
+      "2": "No",
+      "3": "Yes"
+    }
+  },
+  {
+    "sessionId": "sess_007",
+    "detectionType": "Image Detection",
+    "startTime": "2025-08-23 12:30:20",
+    "endTime": "2025-08-23 12:44:20",
+    "duration": "14m 0s",
+    "responses": {
+      "0": ["Object", "Light"],
+      "1": ["Whispers", "Music"],
+      "2": "Yes",
+      "3": "Yes"
+    }
+  },
+  {
+    "sessionId": "sess_008",
+    "detectionType": "Live Detection",
+    "startTime": "2025-08-23 17:55:10",
+    "endTime": "2025-08-23 18:04:10",
+    "duration": "9m 0s",
+    "responses": {
+      "0": ["Animal", "Human"],
+      "1": ["Voices"],
+      "2": "No",
+      "3": "No"
+    }
+  }
+]

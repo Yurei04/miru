@@ -27,10 +27,10 @@ export default function MiruMain() {
     }
 
   return (
-        <div className="w-full h-screen flex flex-col items-center justify-center">
+        <div className="w-full min-h-screen flex flex-col items-center justify-center p-6">
             <div className="flex lg:flex-row sm:flex-col gap-6">
                 <Dialog onOpenChange={(open) => handleDialogChange(open, "Live Detection")}>
-                    <DialogTrigger className="px-4 py-2 bg-green-500 text-white rounded-lg shadow">
+                    <DialogTrigger className="px-4 py-2 bg-green-500 text-white rounded-lg shadow cursor-pointer">
                         Live Detection
                     </DialogTrigger>
                     <DialogContent>
@@ -43,7 +43,7 @@ export default function MiruMain() {
                     </Dialog>
 
                     <Dialog onOpenChange={(open) => handleDialogChange(open, "Image Detection")}>
-                    <DialogTrigger className="px-4 py-2 bg-blue-500 text-white rounded-lg shadow">
+                    <DialogTrigger className="px-4 py-2 bg-blue-500 text-white rounded-lg shadow cursor-pointer">
                         Image Detection
                     </DialogTrigger>
                     <DialogContent>
