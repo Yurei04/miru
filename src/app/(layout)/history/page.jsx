@@ -1,9 +1,8 @@
 
-
-export default function Miru () {
+export default function History () {
     return (
         <div>
-
+            
         </div>
     )
 }
