@@ -11,7 +11,7 @@ model = YOLO("yolov8n.pt")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["/"],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"]
@@ -47,7 +47,7 @@ async def detect_image(file: UploadFile = File(...)):
 # For MIRU live detection
 
 def generate_frames():
-    cap = cv2.VideoCapture()
+    cap = cv2.VideoCapture(0)
     while True:
         success, frame = cap.read()
         if not success:
@@ -68,8 +68,8 @@ def generate_frames():
 
         yield (b"--frame\r\n" b"Content-Type: image/jpeg\r\n\r\n" + frame_bytes + b"\r\n")
 
-        cap.release()
-
+    cap.release()
+    
 @app.get("/detect-live")
 async def detect_live():
     return StreamingResponse(generate_frames(), media_type="multipart/x-mixed-replace; boundary=frame")
