@@ -1,11 +1,10 @@
-
-import Miru from "./(layout)/miru/page";
-import MiruDoc from "./(layout)/miruDoc/page";
+"use client"
+import LoginTabs from "@/components/login";
 
 export default function Home() {
   return (
     <div className="">
-      <Miru />
+      <LoginTabs />
     </div>
   );
 }
