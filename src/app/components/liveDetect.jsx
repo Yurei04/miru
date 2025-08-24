@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 export default function LiveDetection() {
-    const backendUrl = "http://localhost:5000";
+    const backendUrl = "https://api-miru.onrender.com";
     const [streaming, setStreaming] = useState(false);
 
     return (

@@ -7,7 +7,7 @@ export default function ImgDetect() {
   const [selectedFile, setSelectedFile] = useState(null)
   const [preview, setPreview] = useState(null)
   const [loading, setLoading] = useState(false)
-  const backendUrl = "http://localhost:5000"
+  const backendUrl = "https://api-miru.onrender.com"
 
   const handleUpload = async () => {
     if (!selectedFile) {
