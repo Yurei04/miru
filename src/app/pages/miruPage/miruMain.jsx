@@ -9,20 +9,26 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
+import { useRouter } from "next/navigation"
 
 import ImgDetect from "@/app/components/imgDetect"
 import LiveDetection from "@/app/components/liveDetect"
 import SurveyQuestions from "@/app/components/global/survey"
+import HistoryPage from "../historyPage/historyMain"
+import { Button } from "@/components/ui/button"
 
 export default function MiruMain() {
     const [showSurvey, setShowSurvey] = useState(false)
     const [detectionType, setDetectionType] = useState("")
-
+    const router = useRouter();
     const handleDialogChange = (open, type) => {
         if (!open) {
             setDetectionType(type)
             setShowSurvey(true)
         }
+    }
+    const handlePress = () => {
+        router.push("/history")
     }
 
     return (
@@ -51,6 +57,24 @@ export default function MiruMain() {
                             <DialogDescription>Upload an image for detection...</DialogDescription>
                         </DialogHeader>
                         <ImgDetect />
+                    </DialogContent>
+                </Dialog>
+
+                <Dialog onOpenChange={(open) => handleDialogChange(open, "History")}>
+                    <DialogTrigger className="px-6 py-3 bg-yellow-500 text-black font-semibold rounded-lg shadow-lg hover:bg-yellow-400 transition cursor-pointer">
+                        History Records
+                    </DialogTrigger>
+                    <DialogContent className="bg-gray-900 text-yellow-200 border border-yellow-400">
+                        <DialogHeader>
+                            <DialogTitle className="text-yellow-400">History Recordings</DialogTitle>
+                            <DialogDescription>See previous Usage</DialogDescription>
+                        </DialogHeader>
+                              <button
+                                onClick={handlePress}
+                                className="mt-4 px-6 py-2 bg-yellow-400 text-gray-900 font-semibold rounded-lg shadow hover:bg-yellow-300 transition"
+                            >
+                                Open History Records
+                            </button>
                     </DialogContent>
                 </Dialog>
             </div>

@@ -1,5 +1,7 @@
 "use client"
 import { useState } from "react"
+import Zoom from "react-medium-image-zoom";
+import "react-medium-image-zoom/dist/styles.css";
 
 export default function ImgDetect() {
   const [selectedFile, setSelectedFile] = useState(null)
@@ -40,12 +42,14 @@ export default function ImgDetect() {
       <h2 className="text-2xl font-bold">🖼 Image Detection</h2>
 
       {preview && (
-        <div className="w-full max-w-md">
-          <img
-            src={preview}
-            alt="Detection Result"
-            className="rounded-xl border-2 border-yellow-500 shadow-lg"
-          />
+        <div className="w-full max-w-md flex items-center justify-center">
+          <Zoom>
+            <img
+              src={preview}
+              alt="Detection Result"
+              className="rounded-xl border-2 border-yellow-500 shadow-lg max-w-full max-h-full object-contain"
+            />
+          </Zoom>
         </div>
       )}
 
