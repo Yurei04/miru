@@ -18,10 +18,60 @@ const questions = [
     type: "yesno"
   },
   {
-    question: "Do you want to report this episode?",
+    question: "How long did it last?",
+    type: "single",
+    options: ["Few seconds", "1–5 minutes", "5–30 minutes", "Over 30 minutes"]
+  },
+  {
+    question: "Where did it happen?",
+    type: "multiple",
+    options: ["Home", "Work/School", "Outside", "Public place", "Other"]
+  },
+  {
+    question: "Were you alone or with others?",
+    type: "single",
+    options: ["Alone", "With friends/family", "With strangers"]
+  },
+  {
+    question: "How intense was it?",
+    type: "scale",
+    scale: { min: 1, max: 5, labels: ["Very mild", "Very strong"] }
+  },
+  {
+    question: "Did it affect what you were doing?",
+    type: "yesno"
+  },
+  {
+    question: "Did you recognize it as unreal?",
+    type: "single",
+    options: ["Yes, I knew it wasn’t real", "No, it felt real", "Not sure"]
+  },
+  {
+    question: "Were you under stress, tired, or emotional before it happened?",
+    type: "multiple",
+    options: ["Stressed", "Tired", "Emotional", "Calm", "Other"]
+  },
+  {
+    question: "Have you experienced this before?",
+    type: "single",
+    options: ["First time", "Sometimes", "Frequently"]
+  },
+  {
+    question: "Did you take any medication, alcohol, or substances before it?",
+    type: "multiple",
+    options: ["Medication", "Alcohol", "Drugs", "None"]
+  },
+  {
+    question: "Did it cause physical reactions?",
+    type: "multiple",
+    options: ["Sweating", "Shaking", "Heart racing", "Difficulty breathing", "None"]
+  },
+  {
+    question: "Do you want to talk to someone about this episode?",
     type: "yesno"
   }
 ]
+
 
 export default function SurveyQuestions({ detectionType }) {
   const [responses, setResponses] = useState({})
@@ -47,6 +97,10 @@ export default function SurveyQuestions({ detectionType }) {
         return copy
       }
     })
+  }
+
+  const handleNoteChange = (e) => {
+    setResponses(prev => ({ ...prev, notes: e.target.value }))
   }
 
   const handleSubmit = () => {
@@ -110,9 +164,21 @@ export default function SurveyQuestions({ detectionType }) {
         </div>
       ))}
 
+      {/* Notes Section */}
+      <div className="border p-4 rounded-lg">
+        <p className="font-semibold mb-2">Additional Notes</p>
+        <textarea
+          className="w-full p-2 rounded-lg border border-gray-400 text-black"
+          rows={4}
+          placeholder="Write anything else you want to share..."
+          value={responses.notes || ""}
+          onChange={handleNoteChange}
+        />
+      </div>
+
       <button
         onClick={handleSubmit}
-        className="mt-4 px-6 py-2 bg-yellow-400 text-gray-900 font-semibold rounded-lg shadow hover:bg-yellow-300 transition"
+        className="cursor-pointer mt-4 px-6 py-2 bg-yellow-400 text-gray-900 font-semibold rounded-lg shadow hover:bg-yellow-300 transition"
       >
         Submit
       </button>

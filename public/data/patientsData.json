@@ -4,18 +4,25 @@
     "name": "John Doe",
     "history": [
       {
-        "detectionType": "Eye Scan",
-        "startTime": "2025-08-20T09:00:00Z",
-        "endTime": "2025-08-20T09:30:00Z",
-        "duration": "30 mins",
-        "notes": "Routine checkup, no abnormalities."
+        "detectionType": "Live Detection",
+        "startTime": "2025-08-23T17:55:10Z",
+        "endTime": "2025-08-23T18:04:10Z",
+        "duration": "9 mins",
+        "notes": "Detected mixed hallucinations (Animal, Human, Voices). Patient reported tiredness and occasional shaking."
       },
       {
-        "detectionType": "Blood Test",
-        "startTime": "2025-08-18T10:00:00Z",
-        "endTime": "2025-08-18T10:15:00Z",
-        "duration": "15 mins",
-        "notes": "Cholesterol slightly high, advised diet change."
+        "detectionType": "Image Detection",
+        "startTime": "2025-08-21T11:00:00Z",
+        "endTime": "2025-08-21T11:05:00Z",
+        "duration": "5 mins",
+        "notes": "Analyzed uploaded photo. No visual anomalies detected."
+      },
+      {
+        "detectionType": "Live Detection",
+        "startTime": "2025-08-19T15:30:00Z",
+        "endTime": "2025-08-19T15:40:00Z",
+        "duration": "10 mins",
+        "notes": "Brief hallucination episode reported in a public place. Symptoms faded after a few minutes."
       }
     ]
   },
@@ -24,71 +31,92 @@
     "name": "Jane Smith",
     "history": [
       {
-        "detectionType": "X-Ray",
-        "startTime": "2025-08-19T14:00:00Z",
-        "endTime": "2025-08-19T14:20:00Z",
-        "duration": "20 mins",
-        "notes": "Minor fracture in left wrist."
+        "detectionType": "Image Detection",
+        "startTime": "2025-08-20T09:15:00Z",
+        "endTime": "2025-08-20T09:20:00Z",
+        "duration": "5 mins",
+        "notes": "Facial scan showed mild stress signs, no hallucinations."
       },
       {
-        "detectionType": "MRI Scan",
-        "startTime": "2025-08-15T11:00:00Z",
-        "endTime": "2025-08-15T11:45:00Z",
-        "duration": "45 mins",
-        "notes": "Brain scan normal."
+        "detectionType": "Live Detection",
+        "startTime": "2025-08-18T14:00:00Z",
+        "endTime": "2025-08-18T14:08:00Z",
+        "duration": "8 mins",
+        "notes": "Patient reported hearing voices but denied visual hallucinations."
       }
     ]
   },
   {
     "id": 3,
-    "name": "Alice Johnson",
+    "name": "Michael Lee",
     "history": [
       {
-        "detectionType": "General Checkup",
-        "startTime": "2025-08-21T08:30:00Z",
-        "endTime": "2025-08-21T09:00:00Z",
-        "duration": "30 mins",
-        "notes": "Blood pressure slightly elevated."
+        "detectionType": "Live Detection",
+        "startTime": "2025-08-22T20:10:00Z",
+        "endTime": "2025-08-22T20:18:00Z",
+        "duration": "8 mins",
+        "notes": "Patient reported visual hallucinations of animals. No distress noted."
       },
       {
-        "detectionType": "Vaccination",
-        "startTime": "2025-08-10T09:00:00Z",
-        "endTime": "2025-08-10T09:10:00Z",
-        "duration": "10 mins",
-        "notes": "Flu vaccine administered."
+        "detectionType": "Image Detection",
+        "startTime": "2025-08-19T07:45:00Z",
+        "endTime": "2025-08-19T07:50:00Z",
+        "duration": "5 mins",
+        "notes": "Uploaded photo showed normal eye movement."
+      },
+      {
+        "detectionType": "Live Detection",
+        "startTime": "2025-08-15T18:30:00Z",
+        "endTime": "2025-08-15T18:37:00Z",
+        "duration": "7 mins",
+        "notes": "Patient described brief episode of whispering voices, resolved within minutes."
       }
     ]
   },
   {
     "id": 4,
-    "name": "Michael Brown",
+    "name": "Emily Johnson",
     "history": [
       {
-        "detectionType": "Eye Scan",
-        "startTime": "2025-08-17T13:00:00Z",
-        "endTime": "2025-08-17T13:20:00Z",
-        "duration": "20 mins",
-        "notes": "Detected early signs of myopia."
+        "detectionType": "Image Detection",
+        "startTime": "2025-08-21T13:05:00Z",
+        "endTime": "2025-08-21T13:10:00Z",
+        "duration": "5 mins",
+        "notes": "Slight eye redness detected, advised follow-up check."
+      },
+      {
+        "detectionType": "Live Detection",
+        "startTime": "2025-08-17T16:20:00Z",
+        "endTime": "2025-08-17T16:28:00Z",
+        "duration": "8 mins",
+        "notes": "Reported feeling disoriented and hearing faint voices."
       }
     ]
   },
   {
     "id": 5,
-    "name": "Emily Davis",
+    "name": "David Brown",
     "history": [
       {
-        "detectionType": "Blood Test",
-        "startTime": "2025-08-16T10:00:00Z",
-        "endTime": "2025-08-16T10:20:00Z",
-        "duration": "20 mins",
-        "notes": "Hemoglobin levels normal."
+        "detectionType": "Live Detection",
+        "startTime": "2025-08-23T12:10:00Z",
+        "endTime": "2025-08-23T12:18:00Z",
+        "duration": "8 mins",
+        "notes": "Severe hallucination episode, both visual and auditory. Patient appeared distressed."
       },
       {
-        "detectionType": "Dental Checkup",
-        "startTime": "2025-08-14T11:00:00Z",
-        "endTime": "2025-08-14T11:30:00Z",
-        "duration": "30 mins",
-        "notes": "Cavity found, recommended filling."
+        "detectionType": "Image Detection",
+        "startTime": "2025-08-20T08:30:00Z",
+        "endTime": "2025-08-20T08:35:00Z",
+        "duration": "5 mins",
+        "notes": "Photo scan normal, no unusual signs detected."
+      },
+      {
+        "detectionType": "Live Detection",
+        "startTime": "2025-08-12T21:00:00Z",
+        "endTime": "2025-08-12T21:06:00Z",
+        "duration": "6 mins",
+        "notes": "Mild auditory hallucinations, no immediate intervention required."
       }
     ]
   }

@@ -1,12 +1,15 @@
 "use client"
 
 import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogClose,
-} from "@/components/ui/dialog";
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+    DialogClose
+} from "@/components/ui/dialog"
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const ITEMS_PER_PAGE = 5;
@@ -16,7 +19,7 @@ export default function MiruDocPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [openDialog, setOpenDialog] = useState(false);
   const [selectedPatient, setSelectedPatient] = useState(null);
-
+  const router = useRouter()
   useEffect(() => {
     fetch("/data/patientsData.json")
       .then((res) => res.json())
@@ -31,6 +34,11 @@ export default function MiruDocPage() {
     (currentPage - 1) * ITEMS_PER_PAGE,
     currentPage * ITEMS_PER_PAGE
   );
+
+  const handlePress = () => {
+      router.push("/history")
+  }
+
 
   const handlePageChange = (newPage) => {
     if (newPage >= 1 && newPage <= totalPages) setCurrentPage(newPage);
@@ -141,6 +149,12 @@ export default function MiruDocPage() {
                   ))}
                 </ul>
               </div>
+              <button
+                  onClick={handlePress}
+                  className="mt-4 px-6 py-2 bg-yellow-400 text-gray-900 font-semibold rounded-lg shadow hover:bg-yellow-300 transition"
+              >
+                  Open History Records
+              </button>
             </div>
           ) : (
             <div>No patient selected</div>

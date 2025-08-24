@@ -114,36 +114,38 @@ export default function HistoryPage() {
       </div>
 
       <Dialog open={openDialog} onOpenChange={setOpenDialog}>
-        <DialogContent className="bg-gray-900 text-yellow-200 border border-yellow-400">
+        <DialogContent className="max-h-[80vh] overflow-y-auto bg-gray-900 text-yellow-200 border border-yellow-400">
           <DialogHeader>
             <DialogTitle className="text-yellow-400">Session Details</DialogTitle>
-            <DialogDescription>
-              {selectedItem ? (
-                <div className="mt-4 space-y-2">
-                  <div>
-                    <strong>Detector:</strong> {selectedItem.detectionType}
-                  </div>
-                  <div>
-                    <strong>Start Time:</strong>{" "}
-                    {new Date(selectedItem.startTime).toLocaleString()}
-                  </div>
-                  <div>
-                    <strong>End Time:</strong>{" "}
-                    {new Date(selectedItem.endTime).toLocaleString()}
-                  </div>
-                  <div>
-                    <strong>Duration:</strong> {selectedItem.duration}
-                  </div>
-                  <div>
-                    <strong>Responses:</strong>{" "}
-                    <pre className="whitespace-pre-wrap bg-gray-800 p-2 rounded">
-                      {JSON.stringify(selectedItem.responses, null, 2)}
-                    </pre>
-                  </div>
-                </div>
-              ) : (
-                <div>No session selected</div>
-              )}
+            <DialogDescription asChild>
+              <div className="space-y-2">
+                {selectedItem ? (
+                  <>
+                    <div>
+                      <strong>Detector:</strong> {selectedItem.detectionType}
+                    </div>
+                    <div>
+                      <strong>Start Time:</strong>{" "}
+                      {new Date(selectedItem.startTime).toLocaleString()}
+                    </div>
+                    <div>
+                      <strong>End Time:</strong>{" "}
+                      {new Date(selectedItem.endTime).toLocaleString()}
+                    </div>
+                    <div>
+                      <strong>Duration:</strong> {selectedItem.duration}
+                    </div>
+                    <div>
+                      <strong>Responses:</strong>{" "}
+                      <pre className="whitespace-pre-wrap bg-gray-800 p-2 rounded">
+                        {JSON.stringify(selectedItem.responses, null, 2)}
+                      </pre>
+                    </div>
+                  </>
+                ) : (
+                  <div>No session selected</div>
+                )}
+              </div>
             </DialogDescription>
           </DialogHeader>
           <DialogClose className="mt-4 px-4 py-2 bg-yellow-400 rounded text-black hover:bg-yellow-300">
@@ -151,6 +153,7 @@ export default function HistoryPage() {
           </DialogClose>
         </DialogContent>
       </Dialog>
+
     </div>
   );
 }
