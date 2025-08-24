@@ -14,7 +14,6 @@ import ImgDetect from "@/app/components/imgDetect"
 import LiveDetection from "@/app/components/liveDetect"
 import SurveyQuestions from "@/app/components/global/survey"
 
-
 export default function MiruMain() {
     const [showSurvey, setShowSurvey] = useState(false)
     const [detectionType, setDetectionType] = useState("")
@@ -26,30 +25,30 @@ export default function MiruMain() {
         }
     }
 
-  return (
-        <div className="w-full min-h-screen flex flex-col items-center justify-center p-6">
+    return (
+        <div className="w-full min-h-screen flex flex-col items-center justify-center p-6 bg-black text-yellow-200">
             <div className="flex lg:flex-row sm:flex-col gap-6">
                 <Dialog onOpenChange={(open) => handleDialogChange(open, "Live Detection")}>
-                    <DialogTrigger className="px-4 py-2 bg-green-500 text-white rounded-lg shadow cursor-pointer">
+                    <DialogTrigger className="px-6 py-3 bg-yellow-500 text-black font-semibold rounded-lg shadow-lg hover:bg-yellow-400 transition cursor-pointer">
                         Live Detection
                     </DialogTrigger>
-                    <DialogContent>
+                    <DialogContent className="bg-gray-900 text-yellow-200 border border-yellow-400">
                         <DialogHeader>
-                        <DialogTitle>Live Detection</DialogTitle>
-                        <DialogDescription>Performing live detection...</DialogDescription>
+                            <DialogTitle className="text-yellow-400">Live Detection</DialogTitle>
+                            <DialogDescription>Performing live detection...</DialogDescription>
                         </DialogHeader>
                         <LiveDetection />
                     </DialogContent>
-                    </Dialog>
+                </Dialog>
 
-                    <Dialog onOpenChange={(open) => handleDialogChange(open, "Image Detection")}>
-                    <DialogTrigger className="px-4 py-2 bg-blue-500 text-white rounded-lg shadow cursor-pointer">
+                <Dialog onOpenChange={(open) => handleDialogChange(open, "Image Detection")}>
+                    <DialogTrigger className="px-6 py-3 bg-yellow-500 text-black font-semibold rounded-lg shadow-lg hover:bg-yellow-400 transition cursor-pointer">
                         Image Detection
                     </DialogTrigger>
-                    <DialogContent>
+                    <DialogContent className="bg-gray-900 text-yellow-200 border border-yellow-400">
                         <DialogHeader>
-                        <DialogTitle>Image Detection</DialogTitle>
-                        <DialogDescription>Upload an image for detection...</DialogDescription>
+                            <DialogTitle className="text-yellow-400">Image Detection</DialogTitle>
+                            <DialogDescription>Upload an image for detection...</DialogDescription>
                         </DialogHeader>
                         <ImgDetect />
                     </DialogContent>
@@ -57,10 +56,10 @@ export default function MiruMain() {
             </div>
 
             {showSurvey && (
-                <div className="mt-8 w-full max-w-2xl">
-                <SurveyQuestions detectionType={detectionType} />
+                <div className="mt-8 w-full max-w-2xl bg-gray-900 p-6 rounded-lg border border-yellow-400 shadow-lg">
+                    <SurveyQuestions detectionType={detectionType} />
                 </div>
             )}
         </div>
-  )
+    )
 }

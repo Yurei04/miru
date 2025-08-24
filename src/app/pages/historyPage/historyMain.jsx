@@ -47,31 +47,32 @@ export default function HistoryPage() {
   };
 
   return (
-    <div className="w-full min-h-screen flex flex-col items-center p-6 bg-gray-50">
-      <h1 className="text-2xl font-bold mb-6">Detection History</h1>
-
-      <div className="w-full max-w-2xl bg-white shadow-md rounded-lg p-4">
+    <div className="w-full min-h-screen flex flex-col items-center pt-32 p-6 bg-black text-yellow-200">
+      <h1 className="text-2xl font-bold mb-6 text-yellow-400">Detection History</h1>
+      <h3 className="text-lg font-bold mb-4">User Name: John Doe</h3>
+      <h3 className="text-lg font-bold mb-4">Id: 42-1245-234</h3>
+      <div className="w-full max-w-2xl bg-gray-900 shadow-md rounded-lg p-4">
         {paginatedData.length === 0 ? (
-          <div className="text-gray-500 text-center">No history found.</div>
+          <div className="text-gray-400 text-center">No history found.</div>
         ) : (
-          <ul className="divide-y">
+          <ul className="divide-y divide-gray-700">
             {paginatedData.map((item) => (
               <li
                 key={item.sessionId}
-                className="p-4 hover:bg-gray-50 cursor-pointer"
+                className="p-4 hover:bg-gray-800 cursor-pointer"
                 onClick={() => {
                   setSelectedItem(item);
                   setOpenDialog(true);
                 }}
               >
                 <div className="flex justify-between">
-                  <span className="font-medium">{item.detectionType}</span>
-                  <span className="text-sm text-gray-500">
+                  <span className="font-medium text-yellow-300">{item.detectionType}</span>
+                  <span className="text-sm text-gray-400">
                     {new Date(item.startTime).toLocaleDateString()} •{" "}
                     {new Date(item.startTime).toLocaleTimeString()}
                   </span>
                 </div>
-                <div className="text-sm text-gray-600">
+                <div className="text-sm text-gray-500">
                   Length: {item.duration}
                 </div>
               </li>
@@ -82,7 +83,7 @@ export default function HistoryPage() {
 
       <div className="mt-6 flex items-center gap-2">
         <button
-          className="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300"
+          className="px-3 py-1 bg-gray-800 text-yellow-300 rounded hover:bg-yellow-600 hover:text-black"
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
         >
@@ -93,7 +94,9 @@ export default function HistoryPage() {
           <button
             key={idx}
             className={`px-3 py-1 rounded ${
-              currentPage === idx + 1 ? "bg-yellow-400 text-white" : "bg-gray-200"
+              currentPage === idx + 1
+                ? "bg-yellow-400 text-black"
+                : "bg-gray-800 text-yellow-300 hover:bg-yellow-600 hover:text-black"
             }`}
             onClick={() => handlePageChange(idx + 1)}
           >
@@ -102,7 +105,7 @@ export default function HistoryPage() {
         ))}
 
         <button
-          className="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300"
+          className="px-3 py-1 bg-gray-800 text-yellow-300 rounded hover:bg-yellow-600 hover:text-black"
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
         >
@@ -111,44 +114,43 @@ export default function HistoryPage() {
       </div>
 
       <Dialog open={openDialog} onOpenChange={setOpenDialog}>
-        <DialogContent>
-            <DialogHeader>
-            <DialogTitle>Session Details</DialogTitle>
-            <DialogContent>
-                {selectedItem ? (
+        <DialogContent className="bg-gray-900 text-yellow-200 border border-yellow-400">
+          <DialogHeader>
+            <DialogTitle className="text-yellow-400">Session Details</DialogTitle>
+            <DialogDescription>
+              {selectedItem ? (
                 <div className="mt-4 space-y-2">
-                    <div>
-                        <strong>Detector:</strong> {selectedItem.detectionType}
-                    </div>
-                    <div>
-                        <strong>Start Time:</strong>{" "}
-                        {new Date(selectedItem.startTime).toLocaleString()}
-                    </div>
-                    <div>
-                        <strong>End Time:</strong>{" "}
-                        {new Date(selectedItem.endTime).toLocaleString()}
-                    </div>
-                    <div>
-                        <strong>Duration:</strong> {selectedItem.duration}
-                    </div>
-                    <div>
-                        <strong>Responses:</strong>{" "}
-                        <pre className="whitespace-pre-wrap">
-                            {JSON.stringify(selectedItem.responses, null, 2)}
-                        </pre>
-                    </div>
+                  <div>
+                    <strong>Detector:</strong> {selectedItem.detectionType}
+                  </div>
+                  <div>
+                    <strong>Start Time:</strong>{" "}
+                    {new Date(selectedItem.startTime).toLocaleString()}
+                  </div>
+                  <div>
+                    <strong>End Time:</strong>{" "}
+                    {new Date(selectedItem.endTime).toLocaleString()}
+                  </div>
+                  <div>
+                    <strong>Duration:</strong> {selectedItem.duration}
+                  </div>
+                  <div>
+                    <strong>Responses:</strong>{" "}
+                    <pre className="whitespace-pre-wrap bg-gray-800 p-2 rounded">
+                      {JSON.stringify(selectedItem.responses, null, 2)}
+                    </pre>
+                  </div>
                 </div>
-                ) : (
+              ) : (
                 <div>No session selected</div>
-                )}
-            </DialogContent>
-            </DialogHeader>
-            <DialogClose className="mt-4 px-4 py-2 bg-yellow-400 rounded text-white hover:bg-yellow-300">
+              )}
+            </DialogDescription>
+          </DialogHeader>
+          <DialogClose className="mt-4 px-4 py-2 bg-yellow-400 rounded text-black hover:bg-yellow-300">
             Close
-            </DialogClose>
+          </DialogClose>
         </DialogContent>
-        </Dialog>
-
+      </Dialog>
     </div>
   );
 }
