@@ -1,8 +1,10 @@
 
-export default function HistoryLayout (children) {
+export default function HistoryLayout ({children}) {
     return (
         <div>
-            {children}
+            <div>
+                {children}
+            </div>
         </div>
     )
 }

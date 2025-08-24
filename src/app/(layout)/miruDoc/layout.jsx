@@ -1,4 +1,4 @@
-export default function MiruDocLayout (children) {
+export default function MiruDocLayout ({children}) {
     return (
         <div>
             {children}

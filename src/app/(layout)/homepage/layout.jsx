@@ -1,4 +1,4 @@
-export default function HomepageLayout (children) {
+export default function HomepageLayout ({children}) {
     return (
         <div>
             {children}
